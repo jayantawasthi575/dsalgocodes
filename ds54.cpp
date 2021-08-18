@@ -17,4 +17,3 @@ int getNthFromLast(Node *head, int n)
           slow=slow->next;
       }
       return slow->next->data;
-} 
