@@ -24,4 +24,4 @@ int countNodesinLoop(struct Node *head)
         return c;
         c++;
     }
-}   
+ 
