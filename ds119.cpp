@@ -1,6 +1,5 @@
 class Solution {
-  public:
-    // Function to detect cycle in a directed graph.
+public:
     bool checkCycle(int node,vector<int> adj[],int vis[],int dfsVis[])
     {
         vis[node]=1;
@@ -20,18 +19,21 @@ class Solution {
         dfsVis[node]=0;
         return false;
     }
-    bool isCyclic(int V, vector<int> adj[]) {
-        int vis[V],dfsVis[V];
+	bool isPossible(int N, vector<pair<int, int> >& prerequisites) {
+        vector<int> adj[N];
+        for(auto i:prerequisites)
+            adj[i.second].push_back(i.first);
+        int vis[N],dfsVis[N];
         memset(vis,0,sizeof vis);
         memset(dfsVis,0,sizeof dfsVis);
-        for(int i=0;i<V;i++)
+        for(int i=0;i<N;i++)
         {
             if(!vis[i])
             {
                 if(checkCycle(i,adj,vis,dfsVis))
-                    return true;
+                    return false;
             }
         }
-        return false;
-    }
+        return true;
+	}
 };
