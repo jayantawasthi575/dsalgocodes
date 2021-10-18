@@ -51,11 +51,8 @@ void printList(Node* head)
 }
 void deleteNode(Node* head, int key)
 {
-     
     if (head == NULL)
         return;
-         
-    // If the list contains only a single node
     if((head)->data==key && (head)->next==head)
     {
         delete(head);
@@ -64,30 +61,22 @@ void deleteNode(Node* head, int key)
     }
      
     Node *last=head,*d;
-     
-    // If head is to be deleted
     if((head)->data==key)
     {
          
-        // Find the last node of the list
         while(last->next!=head)
             last=last->next;
              
-        // Point last node to the next of head i.e.
-        // the second node of the list
         last->next=(head)->next;
         delete(head);
         head=last->next;
     }
      
-    // Either the node to be deleted is not found
-    // or the end of list is not reached
     while(last->next!=head&&last->next->data!=key)
     {
         last=last->next;
     }
-     
-    // If node to be deleted was found
+
     if(last->next->data==key)
     {
         d=last->next;
