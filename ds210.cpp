@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
  
-// Node of the binary tree
 struct node {
     int data;
     node* left;
@@ -13,9 +12,7 @@ struct node {
         right = NULL;
     }
 };
- 
-// Function to print flattened
-// binary Tree
+
 void print(node* parent)
 {
     node* curr = parent;
@@ -23,11 +20,8 @@ void print(node* parent)
         cout << curr->data << " ", curr = curr->right;
 }
  
-// Function to perform in-order traversal
-// recursively
 void inorder(node* curr, node*& prev)
 {
-    // Base case
     if (curr == NULL)
         return;
     inorder(curr->left, prev);
@@ -37,24 +31,15 @@ void inorder(node* curr, node*& prev)
     inorder(curr->right, prev);
 }
  
-// Function to flatten binary tree using
-// level order traversal
+
 node* flatten(node* parent)
 {
-    // Dummy node
     node* dummy = new node(-1);
- 
-    // Pointer to previous element
     node* prev = dummy;
- 
-    // Calling in-order traversal
     inorder(parent, prev);
- 
     prev->left = NULL;
     prev->right = NULL;
     node* ret = dummy->right;
- 
-    // Delete dummy node
     delete dummy;
     return ret;
 }
@@ -69,8 +54,6 @@ int main()
     root->left->right = new node(4);
     root->right->left = new node(6);
     root->right->right = new node(8);
- 
-    // Calling required function
     print(flatten(root));
  
     return 0;
