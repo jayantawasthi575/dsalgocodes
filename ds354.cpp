@@ -26,4 +26,4 @@ class Solution{
    	    SieveOfEratosthenes(n);
    	    return sum;
    	}    
-};
+};`
